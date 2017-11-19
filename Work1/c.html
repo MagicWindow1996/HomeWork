@@ -1,0 +1,73 @@
+
+<html>
+<head>
+</head>
+
+
+
+<body>
+  <script>
+  function dirReduc(arr){
+    // ...
+    arr = convertNum(arr);
+    var res = [];
+    for(var index in arr)
+    {
+    if(index==1){
+      res.push(arr[index]);
+      continue;
+      }
+   if(res[res.length-1]+arr[index]==0)
+   {
+      res.pop();
+   }else
+   {
+   res.push(arr[index]);
+   }
+    }
+    return convertStr(res);
+  }
+
+  function convertNum(arr)
+  {
+      var res = [];
+      var temp = 0;
+     for(var index in arr)
+     {
+        temp = arr[index];
+       switch(temp)
+       {
+          case "NORTH": temp = -1; break; //北
+          case "EAST": temp = -2; break; //东
+          case "WEST": temp = 2; break; //西
+          case "SOUTH": temp = 1; break;//南
+       }
+        res.push(temp);
+     }
+     return res;
+  }
+
+
+  function convertStr(arr)
+  {
+      var res = [];
+      var temp = "";
+     for(var index in arr)
+     {
+        temp = arr[index];
+       switch(temp)
+       {
+          case -1: temp = "NORTH"; break; //北
+          case -2: temp = "EAST"; break; //东
+          case 2: temp = "WEST"; break; //西
+          case 1: temp = "SOUTH"; break;//南
+       }
+        res.push(temp);
+     }
+     return res;
+  }
+
+  dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"])
+  </script>
+</body>
+<html>

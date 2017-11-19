@@ -1,0 +1,60 @@
+2<html>
+<head>
+</head>
+
+
+
+
+<body>
+
+<script type="text/javascript">
+function queueTime(customers, n) {
+var arr = new Array(n);//工作台
+arr.fill(0);//0表示空闲
+var time = 0;//时间数
+var flag = true;
+while(flag)
+{
+
+  for(var index in arr)
+  {
+
+     if(arr[index]==0)
+     {
+        arr[index]= customers.shift();
+
+        if(typeof(arr[index]) == "undefined")
+        {
+            arr[index]=0;//接不到客时，他就变成了负数
+        }
+     }
+      arr[index]--;
+  }
+
+time++;
+if(!getFlag(arr))
+{
+  flag = false;
+  break;
+}
+}
+return time;
+}
+
+function getFlag(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    if(arr[i]>0)
+    {
+      return true;
+    }
+  }
+}
+
+
+ console.log(queueTime([10,2,3,3], 2));
+  </script>
+</script>
+</body>
+
+
+</html>

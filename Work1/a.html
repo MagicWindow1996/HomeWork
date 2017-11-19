@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+
+<body>
+<script>
+
+var arr = "AAAAABBBBBCCCCCDDDDD";
+function uniqueF(iterable)
+{
+  var res = {};
+  for(var i = 0;i<iterable.length;i++)
+  {
+    res[iterable[i]]= i;
+  }
+  var str = "";
+  for(var key in res)
+  {
+    str+=key;
+  }
+  return str.split("");
+
+}
+
+console.log(uniqueF(arr));
+</script>
+
+</body>
+
+</html>
