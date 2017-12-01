@@ -20,7 +20,39 @@
             })
         });
 
-        p.then(arr => alert("获取成功" + arr), arr => alert("失败了"));
+        let p2 = new Promise(function (resolve, reject) {
+            //resolve  成功
+            //reject  失败
+            $.ajax({
+                url: "../data/2.txt",
+                dataType: 'JSON',
+                success(arr) {
+                    resolve(arr);
+                },
+                error(arr) {
+                    reject(arr);
+                }
+            })
+        });
+        let p3 = new Promise(function (resolve, reject) {
+            //resolve  成功
+            //reject  失败
+            $.ajax({
+                url: "../data/3.txt",
+                dataType: 'JSON',
+                success(arr) {
+                    resolve(arr);
+                },
+                error(arr) {
+                    reject(arr);
+                }
+            })
+        });
+
+        //p.then(arr => alert("获取成功" + arr), arr => alert("失败了"));
+            Promise.all([p,p2,p3]).then(arr=>{
+                console.log(arr);
+            },arr=>{})
     </script>
 </head>
 
