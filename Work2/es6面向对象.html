@@ -1,43 +1,57 @@
 <html>
-        <head>
-            <meta charset="utf-8">
-            <title></title>
-            <script>
 
-                // es5中的面向对象
-            //  function User(name,pass)
-            //  {
-            //      this.name = name;
-            //      this.pass = pass;
-            //  }
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
 
-            //  User.prototype.login=function(){
-            //      alert("登录成功");
-            //      console.log(this.name+":"+this.pass);
-            //  }
+        // es5中的面向对象
+        //  function User(name,pass)
+        //  {
+        //      this.name = name;
+        //      this.pass = pass;
+        //  }
 
-            //  let user1 = new User("小名","123");
-            //  user1.login();
+        //  User.prototype.login=function(){
+        //      alert("登录成功");
+        //      console.log(this.name+":"+this.pass);
+        //  }
 
-//es6 中 的面向对象
+        //  let user1 = new User("小名","123");
+        //  user1.login();
 
-class User {
-    constructor(name,pass)
-    {
-        this.name = name;
-        this.pass = pass;
-    }
-//es6 中类的方法 不需要 function
-     login() {
-         console.log(this.name+":"+this.pass);
-        alert("登录成功");
-    }
-}
+        //es6 中 的面向对象
 
-let user1 = new  User("张三","123");
-user1 .login();
-            </script>
+        class User {
+            constructor(name, pass) {
+                this.name = name;
+                this.pass = pass;
+            }
+            //es6 中类的方法 不需要 function
+            login() {
+                console.log(this.name + ":" + this.pass);
+                alert("登录成功");
+            }
+        }
 
-        </head>
-        
+
+        class VIPUser extends User{
+            constructor(name,pass,level)
+            {
+                super(name,pass);
+                this.level = level;
+            }
+
+            download()
+            {
+                alert("下载");
+            }
+        }
+
+        let user1 = new User("张三", "123");
+        user1.login();
+    </script>
+
+</head>
+
 </html>
