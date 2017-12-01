@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="../resource/jquery.2.12.js" charset="utf-8"></script>
+    <title></title>
+    <script>
+        let p= new Promise(function (resolve, reject) {
+            //resolve  成功
+            //reject  失败
+            $.ajax({
+                 url: "../data/1.txt",
+                 dataType:'JSON',
+                 success(arr)
+                 {
+                     resolve(arr);
+                 },
+                 error(arr)
+                 {
+                     reject(arr);
+                 }
+        })
+        });
+
+        p.then(arr=>alert("获取成功"+arr),arr=>alert("失败了"));
+    </script>
+</head>
+
+</html>
