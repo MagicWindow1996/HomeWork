@@ -50,9 +50,13 @@
         });
 
         //p.then(arr => alert("获取成功" + arr), arr => alert("失败了"));
-            Promise.all([p,p2,p3]).then(arr=>{
-                console.log(arr);
-            },arr=>{})
+        Promise.all([p, p2, p3]).then(arr => {
+          //  console.log(arr);
+           let [rt1, rt2 ,rt3] = arr;
+           alert(rt1);
+           alert(rt2);
+           alert(rt3);
+        }, arr => { })
     </script>
 </head>
 
