@@ -1,0 +1,28 @@
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script>
+            //generator 函数 在function和函数名之间用一个* 表示,注意 generator函数只返回一个对象
+           function * show()
+           {
+            // alert('a');
+
+            //使用yield产生临时返回值
+            //其可以传参， 也可以返回一个返回值
+             yield 1;
+             //alert('b');
+
+             return 12;
+           }
+          let obj =show();
+          //next()方法用于开始generator对象的开始和执行，
+          let res1 =obj.next();
+            console.log(res1);// generator对象的返回值是一个json {done:false,value:1} .done表示函数是否完成，value包含的是返回值
+          let res2 =obj.next();
+         console.log(res2);
+        </script>
+    </head>
+    
+</html>

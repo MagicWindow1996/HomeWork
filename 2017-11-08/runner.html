@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../resource/runner.js" charset="utf-8"></script>
+    <script src="../resource/jquery.2.12.js" charset="utf-8"></script>
+    <script>
+        runner(function *() {
+            let p1 =yield $.ajax({
+                url: "../data/1.txt",
+                dataType: "Json"
+            });
+            alert(p1);
+            console.log(p1);
+            let p2 =yield $.ajax({
+                url: "../data/2.txt",
+                dataType: "Json"
+            });
+            alert(p2);
+            console.log(p2);
+        });
+    </script>
+</head>
+
+</html>
