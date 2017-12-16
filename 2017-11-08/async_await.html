@@ -1,0 +1,28 @@
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../resource/runner.js" charset="utf-8"></script>
+        <script>
+            async function show(){
+                let p1 =await $.ajax({
+                    url: "../data/1.txt",
+                    dataType: "Json"
+                });
+                alert(p1);
+                console.log(p1);
+                let p2 =await $.ajax({
+                    url: "../data/2.txt",
+                    dataType: "Json"
+                });
+                alert(p2);
+                console.log(p2);
+            }
+            show();
+        </script>
+    </head>
+    0
+    z
+    
+    </html>
