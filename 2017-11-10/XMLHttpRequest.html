@@ -1,0 +1,55 @@
+<head>
+
+    <head>
+        <meta charset="utf-8">
+        <script>
+            window.onload = function () {
+                let btn = document.getElementById("btn1");
+
+
+                btn.onclick = function () {
+                    //1.创建xhr对象
+                    var xhr = new XMLHttpRequest();
+                    //xhr.readyState = 0; 初始状态
+                    //2.链接
+                    xhr.open("get", "../data/1.txt", true);
+                    //xhr.readyState = 1;  连接到服务器
+                    //3.发送
+
+                    xhr.send();
+                    //xhr.readyState = 2; 发送到服务器 
+
+                    //4.接受
+                    xhr.onreadystatechange = function () {
+                       // alert(xhr.readyState);
+                        //xhr.readyState  = 3; head接收完成
+                        //xhr.readyState = 4 ; body接收完成. 完成不代表成功
+                        //xhr.status  是http状态码
+                        if(xhr.readyState == 4)
+                        {
+                            if(xhr.status>=200 && xhr.status<300)
+                            {
+                               // alert("success");
+                            let obj=   JSON.parse(xhr.responseText);
+                            console.log(obj);
+                            }else{
+                               // alert("error");
+                            } 
+                        }
+
+                    }
+                }
+
+
+
+            }
+        </script>
+    </head>
+
+
+    <body>
+
+        <input type="button" name="" value="按奶" id="btn1">
+
+    </body>
+</head>
