@@ -41,3 +41,5 @@ let xhr = new XMLHttpRequest();
    eval(str);
 
 
+2.Promise的简单实现
+

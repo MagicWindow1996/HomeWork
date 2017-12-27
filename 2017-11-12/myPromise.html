@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="../resource/jquery.2.12.js"></script>
+    <script>
+        class myPromise {
+
+            constructor(fn) {
+                let that = this;
+                that._succ_res = null;
+                that._err_res = null;
+                that.status = '';
+
+                that._queue = [];
+
+
+                fn(function (...args) {
+                    that._succ_res = args;
+                    that.status = "succ";
+                    that._queue.forEach(json => {
+                        json.fn1(...args);
+                    });
+                }, function (...args) {
+                    that._err_res = args;
+                    that.status = "error";
+                    that._queue.forEach(json => {
+                        json.fn2(...args);
+                    })
+                });
+
+            }
+
+
+            then(fn1, fn2) {
+                let that = this;
+                if (that.status == "succ") {
+                    fn1(...that._succ_res);
+                } else if (that.status == "error") {
+                    fn2(...that._err_res);
+                } else {
+                    that._queue.push({
+                        fn1,
+                        fn2
+                    });
+
+
+                }
+            }
+
+        }
+    </script>
+
+    <script>
+        // let p1 = new myPromise(function (resolve, reject) {
+        //     setTimeout(() => {
+        //         resolve("你好")
+        //     }, 500);
+        // })
+
+        // p1.then(arr => {
+        //     alert(arr)
+        // }, err => {
+        //     alert("失败")
+        // });
+    </script>
+    <script>
+        myPromise.all = function (arr) {
+            let aResult = [];
+
+            return new myPromise(function (resolve, reject) {
+                let i = 0;
+
+                next();
+
+                function next() {
+                    arr[i].then(function (res) {
+                        aResult.push(res);
+                        i++;
+                        if (i == arr.length) {
+                            resolve(aResult);
+                        } else {
+                            next();
+                        }
+                    }, reject);
+                }
+            });
+        }
+
+        myPromise.all([$.ajax({
+                url: "../data/1.txt",
+                dataType: "json"
+            }),
+            $.ajax({
+                url: "../data/2.txt",
+                dataType: "json"
+            })
+        ]).then(arr => {
+            alert("成功");
+            console.log(arr);
+
+        }, err => {
+            alert("失败");
+        })
+    </script>
+</head>
+
+
+<body>
+
+
+</body>
+
+</html>
