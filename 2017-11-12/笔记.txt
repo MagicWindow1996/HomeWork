@@ -1,0 +1,43 @@
+1. seajs的简单实现
+
+1)先定义上层接口
+   mysea.use("./mod1.js", function (mod) {
+            alert(mod.a+mod.b);
+           
+        });
+
+
+2) 定义mod的 函数参数
+
+define(function(reqiure,exprots,moudle){
+    exprots.a= 10;
+    exprots.b = 20 ;
+
+})
+
+3) 处理mysea 的实现，先用ajax获取到指定的path路径的js文件。
+
+let xhr = new XMLHttpRequest();
+        xhr.open("get",path,true);
+        xhr.send();
+
+4） 获取到之后，定义一个与 mod中相同的函数且参数的类型相同
+   
+                    function define(fn){
+                        let moudle = {
+                            exprots:{}
+                        }; 
+                    }
+
+5) 在函数中执行 mod定义的 函数参数
+    fn(function(){},moudle.exprots,moudle);
+
+6) 在函数中执行上层接口中定义的回调函数
+
+ callback(moudle.exprots);
+
+
+ 7) 在函数外部，使用eval 调用mod中的代码
+   eval(str);
+
+
