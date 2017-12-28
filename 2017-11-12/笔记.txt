@@ -42,4 +42,27 @@ let xhr = new XMLHttpRequest();
 
 
 2.Promise的简单实现
+略
+
+
+
+3.websocket的简单实现
+websocket是双工通信的
+
+1)node中先创建http服务，再通过http服务开启socket服务
+
+
+2)在客户但引入scoket.io.js文件 ，并且使用socekt创建socket对象
+   let sock = io.connect("ws://localhost:5050");
+
+3)发送数据一方使用 emit 指定链接名称，和发送的数据
+sock.emit("a",Math.random());
+
+4)接受的一方使用 on 指定链接名称，和一个回调函数
+   sock.on("a", function (msg) {
+
+            console.log(`服务器发来 ${msg}`);
+
+        })
+
 
